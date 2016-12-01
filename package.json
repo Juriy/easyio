@@ -1,13 +1,14 @@
 {
   "name": "easyio",
-  "version": "1.0.0",
-  "description": "A simple Socket.IO demo",
+  "version": "0.0.1",
+  "description": "A tiny node.js app to test your socket.io connectivity",
   "main": "main.js",
-  "scripts": {
-    "test": "mocha"
+  "repository": {
+    "url": "git@github.com:Juriy/easyio.git",
+    "type": "git"
   },
   "author": "Juriy Bura <juriy.bura@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
     "socket.io": "^1.7.1"
