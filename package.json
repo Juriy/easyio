@@ -1,0 +1,15 @@
+{
+  "name": "easyio",
+  "version": "1.0.0",
+  "description": "A simple Socket.IO demo",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Juriy Bura <juriy.bura@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.7.1"
+  }
+}
