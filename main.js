@@ -9,6 +9,13 @@ const io = socketio(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/api/test', (req, res) => {
+  res.json({
+    headers: req.headers,
+    address: req.connection.remoteAddress
+  });
+});
+
 io.on('connection', (sock) => {
   console.log('Client connected');
 

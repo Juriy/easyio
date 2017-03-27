@@ -10,7 +10,7 @@ body {
 
 .panel {
   float: left;
-  margin: 20px;
+  margin: 0 20px;
 }
 
 ul {
@@ -33,6 +33,8 @@ ul li:nth-child(odd) {
   list-style: none;
 }
 
-#headers {
+#api-test {
   list-style: none;
+  width: 470px;
+  overflow-y: scroll;
 }
