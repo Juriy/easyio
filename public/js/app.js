@@ -28,6 +28,7 @@ const sendXhr = () => {
     }
 
     const resp = JSON.parse(responseText);
+    log('&nbsp;');
     log(`Connected from: ${resp.address}`);
     log('<strong>Headers (as node.js saw it)</strong>');
     Object.keys(resp.headers).forEach((key) => {
