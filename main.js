@@ -21,11 +21,11 @@ io.on('connection', (sock) => {
   });
 });
 
-server.listen(8080, (err) => {
+server.listen(8080, process.argv[2] || '0.0.0.0', (err) => {
   if (err) {
     console.log(err.stack);
     return;
   }
 
-  console.log('Listening on :8080');
+  console.log('Listening on http://0.0.0.0:8080');
 });
