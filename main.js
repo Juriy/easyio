@@ -2,10 +2,14 @@ const http = require('http');
 const path = require('path');
 const express = require('express');
 const socketio = require('socket.io');
+const parseArgs = require('minimist');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+
+const args = parseArgs(process.argv.slice(2));
+const { name = 'default', port = '8080'} = args;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -16,10 +20,15 @@ app.get('/api/test', (req, res) => {
   });
 });
 
+app.get('/api/name', (req, res) => {
+  res.json({ name });
+});
+
 io.on('connection', (sock) => {
   console.log('Client connected');
 
   sock.on('heartbeat', (payload) => {
+    payload.nodeName = name;
     sock.emit('heartbeat', payload);
   });
 
@@ -28,11 +37,11 @@ io.on('connection', (sock) => {
   });
 });
 
-server.listen(8080, process.argv[2] || '0.0.0.0', (err) => {
+server.listen(+port, '127.0.0.1', (err) => {
   if (err) {
     console.log(err.stack);
     return;
   }
 
-  console.log('Listening on http://0.0.0.0:8080');
+  console.log(`Node [${name}] listens on http://127.0.0.1:${port}.`);
 });

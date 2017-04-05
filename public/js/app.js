@@ -17,7 +17,7 @@ const sendHeartbeat = () => {
 const sendXhr = () => {
   const req = new XMLHttpRequest();
   const log = append.bind(null, 'api-test');
-  log('Running XHR test');
+  log('Running XHR header test');
 
   req.addEventListener('load', () => {
     const { status, statusText, responseText } = req;
@@ -51,7 +51,8 @@ const trimText = (max, text) => {
 
 const onHeartbeat = (payload) => {
   const roundtripTime = Date.now() - payload.timestamp;
-  append('log', 'Roundtrip: ' + roundtripTime + 'ms');
+  const { nodeName } = payload;
+  append('log', `[${nodeName}]: ${roundtripTime}ms`);
 };
 
 setInterval(sendHeartbeat, 1000);
