@@ -6,6 +6,14 @@ body {
 
 }
 
+.row:after {
+  content: " ";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
 .navbar {
   width: 100%;
   height: 40px;
@@ -41,6 +49,29 @@ ul li:nth-child(odd) {
   background-color: #f6f6f6;
 }
 
+.button {
+  display: inline-block;
+  background-color: #26a69a;
+  user-select: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.node-name {
+  line-height: 2.5rem;
+  vertical-align: text-bottom;
+  font-size: 1.5rem;
+  margin-left: 15px;
+}
+
+.button:hover {
+  background-color: #2bbbad;
+}
+
 #log {
   overflow-y: scroll;
   list-style: none;
@@ -50,4 +81,35 @@ ul li:nth-child(odd) {
   list-style: none;
   width: 470px;
   overflow-y: scroll;
+}
+
+
+/* https://github.com/mladenplavsic/css-ripple-effect/blob/
+   master/dist/ripple.css
+ */
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+.ripple:active:after {
+  transform: scale(0, 0);
+  opacity: .2;
+  transition: 0s;
 }

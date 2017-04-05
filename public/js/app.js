@@ -64,3 +64,24 @@ sock.on('msg', append.bind(null, 'log'));
 sock.on('heartbeat', onHeartbeat);
 
 sendXhr();
+
+// Set up click listener for button
+const button = document.querySelector('#get-node-name');
+button.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const req = new XMLHttpRequest();
+
+  req.addEventListener('load', () => {
+    const { status, responseText } = req;
+    if (status < 200 || status > 299) {
+      return;
+    }
+    const resp = JSON.parse(responseText);
+
+    document.querySelector('.node-name').innerHTML = resp.name;
+  });
+
+  req.open('GET', '/api/name');
+  req.send();
+});
