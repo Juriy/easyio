@@ -1,10 +1,10 @@
 #!/bin/bash
 
 tar czf easyio.tar.gz main.js package.json yarn.lock public LICENSE
-scp easyio.tar.gz 45.76.152.89:~
+scp easyio.tar.gz nanogram.io:~
 rm easyio.tar.gz
 
-ssh 45.76.152.89 << 'ENDSSH'
+ssh nanogram.io << 'ENDSSH'
 pm2 stop easyio
 rm -rf easyio
 mkdir easyio
