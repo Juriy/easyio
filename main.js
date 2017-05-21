@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const socketio = require('socket.io');
 const parseArgs = require('minimist');
+const fs = require('fs');
 
 const app = express();
 const server = http.createServer(app);
@@ -24,6 +25,16 @@ app.get('/api/name', (req, res) => {
   res.json({ name });
 });
 
+app.get('/api/file', (req, res) => {
+  fs.readFile(`${__dirname}/version.txt`, 'utf8', (err, version) => {
+    res.json({
+      version,
+      dirname: __dirname,
+      cwd: process.cwd()
+    });
+  });
+});
+
 io.on('connection', (sock) => {
   console.log('Client connected');
 
@@ -37,7 +48,7 @@ io.on('connection', (sock) => {
   });
 });
 
-server.listen(+port, '127.0.0.1', (err) => {
+server.listen(+port, '0.0.0.0', (err) => {
   if (err) {
     console.log(err.stack);
     return;
