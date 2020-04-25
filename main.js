@@ -25,10 +25,10 @@ app.get('/api/name', (req, res) => {
   res.json({ name });
 });
 
-app.get('/api/file', (req, res) => {
+app.get('/api/info', (req, res) => {
   fs.readFile(`${__dirname}/version.txt`, 'utf8', (err, version) => {
     res.json({
-      version,
+      version: version || 0,
       dirname: __dirname,
       cwd: process.cwd()
     });
