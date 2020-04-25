@@ -13,8 +13,8 @@
   "author": "Juriy Bura <juriy.bura@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.15.2",
-    "minimist": "^1.2.0",
-    "socket.io": "^1.7.3"
+    "express": "^4.17.1",
+    "minimist": "^1.2.5",
+    "socket.io": "^2.3.0"
   }
 }
